@@ -9,6 +9,7 @@
     "start": "webpack serve --mode=development --open"
   },
   "author": "Marina Pavlova",
+  "keywords": [],
   "license": "ISC",
   "devDependencies": {
     "webpack": "^5.69.1",
