@@ -5,3 +5,4 @@ import modal from "./modules/modal";
 
 timer("14 March 2022");
 menu();
+modal();
