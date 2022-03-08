@@ -1,7 +1,6 @@
-'use strict';
+"use strict";
 
 const timer = (deadline) => {
-
     const timerDays = document.getElementById("timer-days");
     const timerHours = document.getElementById("timer-hours");
     const timerMinutes = document.getElementById("timer-minutes");
@@ -34,11 +33,10 @@ const timer = (deadline) => {
         timerHours.textContent = addZero(getTime.hours);
         timerMinutes.textContent = addZero(getTime.minutes);
         timerSeconds.textContent = addZero(getTime.seconds);
-  
     };
 
-    let idInterval = setInterval( () => {
-        if(getTimeRemain().timeRemain > 0) {
+    let idInterval = setInterval(() => {
+        if (getTimeRemain().timeRemain > 0) {
             updateClock();
         } else {
             clearInterval(idInterval);
@@ -48,7 +46,6 @@ const timer = (deadline) => {
             timerSeconds.textContent = "00";
         }
     }, 1000);
-       
 };
 
 export default timer;

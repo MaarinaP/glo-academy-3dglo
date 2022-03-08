@@ -1,7 +1,6 @@
-'use strict';
+"use strict";
 
 const validation = () => {
-
     const form2Message = document.getElementById("form2-message");
 
     const inputText = document.querySelectorAll("form input[type='text']");
@@ -19,19 +18,19 @@ const validation = () => {
     const edgeDash = /^\-|\-$/g;
     const edgeSpace = /^\s+|\s+$/g;
 
-    inputText.forEach( input => {
+    inputText.forEach((input) => {
         input.addEventListener("input", (event) => {
             event.target.value = event.target.value.replace(validationText, "");
         });
     });
 
-    inputEmail.forEach( input => {
+    inputEmail.forEach((input) => {
         input.addEventListener("input", (event) => {
             event.target.value = event.target.value.replace(validationEmail, "");
         });
     });
 
-    inputPhone.forEach( input => {
+    inputPhone.forEach((input) => {
         input.addEventListener("input", (event) => {
             event.target.value = event.target.value.replace(validationPhone, "");
         });
@@ -41,33 +40,44 @@ const validation = () => {
         event.target.value = event.target.value.replace(validationText, "");
     });
 
-    inputNumber.forEach( input => {
+    inputNumber.forEach((input) => {
         input.addEventListener("input", (event) => {
             event.target.value = event.target.value.replace(validationNumber, "");
         });
     });
 
-    inputText.forEach( input => {
+    inputText.forEach((input) => {
         input.addEventListener("blur", (event) => {
-            event.target.value = event.target.value.replace(manyDash, "-").replace(manySpace, " ").replace(edgeDash, "").replace(edgeSpace, "");
-            let capitalizeLetterFunc = match => match.toUpperCase();
+            event.target.value = event.target.value
+                .replace(manyDash, "-")
+                .replace(manySpace, " ")
+                .replace(edgeDash, "")
+                .replace(edgeSpace, "");
+            let capitalizeLetterFunc = (match) => match.toUpperCase();
             event.target.value = event.target.value.toLowerCase();
             event.target.value = event.target.value.replace(/^[а-я]{1}|\s{1}[а-я]{1}/gi, capitalizeLetterFunc);
         });
     });
 
-    inputEmail.forEach( input => {
+    inputEmail.forEach((input) => {
         input.addEventListener("blur", (event) => {
-            event.target.value = event.target.value.replace(manyDash, "-").replace(manySpace, " ").replace(edgeDash, "").replace(edgeSpace, "");
+            event.target.value = event.target.value
+                .replace(manyDash, "-")
+                .replace(manySpace, " ")
+                .replace(edgeDash, "")
+                .replace(edgeSpace, "");
         });
     });
 
-    inputPhone.forEach( input => {
+    inputPhone.forEach((input) => {
         input.addEventListener("blur", (event) => {
-            event.target.value = event.target.value.replace(manyDash, "-").replace(manySpace, " ").replace(edgeDash, "").replace(edgeSpace, "");
+            event.target.value = event.target.value
+                .replace(manyDash, "-")
+                .replace(manySpace, " ")
+                .replace(edgeDash, "")
+                .replace(edgeSpace, "");
         });
     });
-
 };
 
 export default validation;

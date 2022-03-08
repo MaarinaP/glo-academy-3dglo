@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const modal = () => {
     const modal = document.querySelector(".popup");
@@ -9,28 +9,26 @@ const modal = () => {
     let step = 0;
     let idInterval;
     const modalAnimation = () => {
-        let d = (window.innerWidth-modalContent.offsetWidth)*0.5+50;
+        let d = (window.innerWidth - modalContent.offsetWidth) * 0.5 + 50;
 
         step++;
 
         idInterval = requestAnimationFrame(modalAnimation);
-        if(step < d) {
+        if (step < d) {
             modalContent.style.left = step + "px";
         } else {
             cancelAnimationFrame(idInterval);
         }
-
     };
 
-    buttons.forEach(btn => {
+    buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
             modalContent = document.querySelector(".popup-content");
             modal.style.display = "block";
             if (window.innerWidth > 768) {
                 modalContent.style.left = -modalContent.offsetWidth + "px";
-                requestAnimationFrame(modalAnimation); 
+                requestAnimationFrame(modalAnimation);
             }
-            
         });
     });
 
