@@ -1,23 +1,23 @@
 "use strict";
 
 const modal = () => {
-    const modal = document.querySelector(".popup");
+    let modal = document.querySelector(".popup");
     let modalContent = document.querySelector(".popup-content");
-    const closeBtn = modal.querySelector(".popup-close");
     const buttons = document.querySelectorAll(".popup-btn");
 
     let step = 0;
     let idInterval;
     const modalAnimation = () => {
-        let d = (window.innerWidth - modalContent.offsetWidth) * 0.5 + 50;
+        let d = ((window.innerWidth - modalContent.offsetWidth) * 0.5) / 5;
 
         step++;
 
         idInterval = requestAnimationFrame(modalAnimation);
         if (step < d) {
-            modalContent.style.left = step + "px";
+            modalContent.style.left = step * 5 + "px";
         } else {
             cancelAnimationFrame(idInterval);
+            step = 0;
         }
     };
 
@@ -32,8 +32,10 @@ const modal = () => {
         });
     });
 
-    closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
+    modal.addEventListener("click", (e) => {
+        if (!e.target.closest(".popup-content") || e.target.classList.contains("popup-close")) {
+            modal.style.display = "none";
+        }
     });
 };
 
