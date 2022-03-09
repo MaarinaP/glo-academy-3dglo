@@ -8,13 +8,14 @@ const modal = () => {
     let step = 0;
     let idInterval;
     const modalAnimation = () => {
-        let d = ((window.innerWidth - modalContent.offsetWidth) * 0.5) / 5;
+        let d = ((window.innerWidth - modalContent.offsetWidth) * 0.5) / 50;
 
         step++;
 
         idInterval = requestAnimationFrame(modalAnimation);
         if (step < d) {
-            modalContent.style.left = step * 5 + "px";
+            modalContent.style.left = step * 50 + "px";
+            console.log(step);
         } else {
             cancelAnimationFrame(idInterval);
             step = 0;
