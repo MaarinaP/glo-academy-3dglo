@@ -44,10 +44,10 @@ const calc = (price = 100) => {
 
             let i = 0;
             const numberAnimate = () => {
-                if (i == totalValue) {
+                if (i >= totalValue) {
                     clearInterval(intervalId);
                 } else {
-                    i += 200;
+                    i += 10;
                     total.textContent = i;
                 }
             };
