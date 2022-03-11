@@ -1,34 +1,27 @@
 "use strict";
 
+import { animate } from "./helpers";
+
 const modal = () => {
     let modal = document.querySelector(".popup");
     let modalContent = document.querySelector(".popup-content");
     const buttons = document.querySelectorAll(".popup-btn");
-
-    let step = 0;
-    let idInterval;
-    const modalAnimation = () => {
-        let d = ((window.innerWidth - modalContent.offsetWidth) * 0.5) / 50;
-
-        step++;
-
-        idInterval = requestAnimationFrame(modalAnimation);
-        if (step < d) {
-            modalContent.style.left = step * 50 + "px";
-            console.log(step);
-        } else {
-            cancelAnimationFrame(idInterval);
-            step = 0;
-        }
-    };
 
     buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
             modalContent = document.querySelector(".popup-content");
             modal.style.display = "block";
             if (window.innerWidth > 768) {
-                modalContent.style.left = -modalContent.offsetWidth + "px";
-                requestAnimationFrame(modalAnimation);
+                animate({
+                    duration: 250,
+                    timing(timeFraction) {
+                        return Math.pow(timeFraction, 2);
+                    },
+                    draw(progress) {
+                        modalContent.style.left = -modalContent.offsetWidth + "px";
+                        modalContent.style.left = 35 * progress + "%";
+                    },
+                });
             }
         });
     });
