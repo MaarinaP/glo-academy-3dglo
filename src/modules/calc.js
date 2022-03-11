@@ -40,14 +40,18 @@ const calc = (price = 100) => {
     calcBlock.addEventListener("change", (e) => {
         if (e.target === calcType || e.target === calcSquare || e.target === calcCount || e.target === calcDay) {
             clearInterval(intervalId);
+            total.textContent = 0;
             let totalValue = countCalc();
-
             let i = 0;
+
             const numberAnimate = () => {
                 if (i >= totalValue) {
                     clearInterval(intervalId);
-                } else {
+                } else if (i < 500) {
                     i += 10;
+                    total.textContent = i;
+                } else {
+                    i += 100;
                     total.textContent = i;
                 }
             };
