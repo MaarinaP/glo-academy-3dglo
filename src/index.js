@@ -6,7 +6,7 @@ import tabs from "./modules/tabs";
 import slider from "./modules/slider";
 import calc from "./modules/calc";
 
-timer("14 March 2022");
+timer("15 March 2022");
 menu();
 modal();
 validation();
