@@ -2,9 +2,7 @@
 
 const menu = () => {
     const body = document.querySelector("body");
-    const menuBtn = document.querySelector(".menu");
     const menu = document.querySelector("menu");
-    const closeBtn = menu.querySelector(".close-btn");
     const menuItems = menu.querySelectorAll("ul a");
     const scroll = document.querySelector("main a");
 
