@@ -10,7 +10,7 @@ const validation = () => {
 
     const validationText = /[^а-я\- ]+/i;
     const validationEmail = /[^a-z\@\-\_\.\!\~\*\']+/i;
-    const validationPhone = /[^0-9\(\)\-]+/i;
+    const validationPhone = /[^0-9\(\)\-\+]+/i;
     const validationNumber = /[^0-9]+/i;
 
     const manyDash = /(\-+)/g;
