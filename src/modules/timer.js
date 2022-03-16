@@ -46,6 +46,8 @@ const timer = (deadline) => {
             timerSeconds.textContent = "00";
         }
     }, 1000);
+
+    updateClock();
 };
 
 export default timer;

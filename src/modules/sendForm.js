@@ -5,32 +5,43 @@ const sendForm = ({ formId, someElem = [] }) => {
     const statusBlock = document.createElement("div");
     const loadText = "Загрузка...";
     const errorText = "Ошибка...";
+    const noValidText = "Введите правильные данные";
     const successText = "Спасибо! Наш менджер с вами свяжется!";
 
     const validate = (list) => {
         let success = true;
 
-        const validationName = /[а-я ]+/i;
-        const validationPhone = /[0-9\(\)\-\+]+/i;
-        const validationMessage = /[а-я\d\s\.\,\:\;\?\!\-\"\(\)]+|^$/i;
+        const validationName = /[^а-я ]+/i;
+        const validationPhone = /[^0-9\(\)\-\+]+/i;
+        const validationMessage = /[^а-я\d\s\.\,\:\;\?\!\-\"\(\)]+/i;
 
         list.forEach((input) => {
             if (input.name === "user_name") {
-                if (!validationName.test(input.value)) {
+                if (validationName.test(input.value)) {
                     success = false;
+                    input.style.borderStyle = "solid";
+                    input.style.borderColor = "red";
                 }
             } else if (input.name === "user_email") {
                 if (input.value === "") {
                     success = false;
+                    input.style.borderStyle = "solid";
+                    input.style.borderColor = "red";
                 }
             } else if (input.name === "user_phone") {
-                if (!validationPhone.test(input.value)) {
+                if (validationPhone.test(input.value)) {
                     success = false;
+                    input.style.borderStyle = "solid";
+                    input.style.borderColor = "red";
                 }
             } else if (input.name === "user_message") {
-                if (!validationMessage.test(input.value)) {
+                if (validationMessage.test(input.value)) {
                     success = false;
+                    input.style.borderStyle = "solid";
+                    input.style.borderColor = "red";
                 }
+            } else {
+                success = true;
             }
         });
 
@@ -75,12 +86,14 @@ const sendForm = ({ formId, someElem = [] }) => {
                     statusBlock.textContent = successText;
                     formElements.forEach((input) => {
                         input.value = "";
+                        input.removeAttribute("style");
                     });
                 })
                 .catch(() => {
                     statusBlock.textContent = errorText;
                 });
         } else {
+            statusBlock.textContent = noValidText;
             alert("Данные не валидны!!!");
         }
     };

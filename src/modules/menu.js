@@ -19,7 +19,11 @@ const menu = () => {
     body.addEventListener("click", (e) => {
         if (e.target.classList.contains("close-btn") || e.target.closest(".menu")) {
             handleMenu();
-        } else if (menu.classList.contains("active-menu") && !e.target.classList.contains("active-menu")) {
+        } else if (
+            menu.classList.contains("active-menu") &&
+            !e.target.classList.contains("active-menu") &&
+            !e.target.closest("menu li")
+        ) {
             handleMenu();
         } else if (e.target.closest("main a")) {
             e.preventDefault();
@@ -27,6 +31,7 @@ const menu = () => {
         } else if (e.target.closest("menu li a")) {
             menuItems.forEach((item) => {
                 if (item === e.target) {
+                    // console.log(e.target);
                     handleMenu();
                     e.preventDefault();
                     smoothScrolling(item);

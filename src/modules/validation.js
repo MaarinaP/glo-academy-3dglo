@@ -12,6 +12,7 @@ const validation = () => {
     const validationEmail = /[^a-z\@\-\_\.\!\~\*\']+/i;
     const validationPhone = /[^0-9\(\)\-\+]+/i;
     const validationNumber = /[^0-9]+/i;
+    const validationMessage = /[^а-я\d\s\.\,\:\;\?\!\-\"\(\)]+/i;
 
     const manyDash = /(\-+)/g;
     const manySpace = /(\s+)/g;
@@ -37,7 +38,7 @@ const validation = () => {
     });
 
     form2Message.addEventListener("input", (event) => {
-        event.target.value = event.target.value.replace(validationText, "");
+        event.target.value = event.target.value.replace(validationMessage, "");
     });
 
     inputNumber.forEach((input) => {
