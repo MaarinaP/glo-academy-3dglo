@@ -64,6 +64,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         const formBody = {};
 
         statusBlock.textContent = loadText;
+        statusBlock.style.color = "white";
         form.append(statusBlock);
 
         formData.forEach((val, key) => {
@@ -87,6 +88,9 @@ const sendForm = ({ formId, someElem = [] }) => {
                     formElements.forEach((input) => {
                         input.value = "";
                         input.removeAttribute("style");
+                        setTimeout(() => {
+                            statusBlock.textContent = "";
+                        }, 2000);
                     });
                 })
                 .catch(() => {

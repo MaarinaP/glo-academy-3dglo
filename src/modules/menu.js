@@ -18,6 +18,7 @@ const menu = () => {
 
     body.addEventListener("click", (e) => {
         if (e.target.classList.contains("close-btn") || e.target.closest(".menu")) {
+            e.preventDefault();
             handleMenu();
         } else if (
             menu.classList.contains("active-menu") &&
