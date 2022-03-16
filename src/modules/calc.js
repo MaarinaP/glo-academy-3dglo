@@ -1,5 +1,7 @@
 "use strict";
 
+import { animate } from "./helpers";
+
 const calc = (price = 100) => {
     const calcBlock = document.querySelector(".calc-block");
     const calcType = document.querySelector(".calc-type");
@@ -39,24 +41,22 @@ const calc = (price = 100) => {
 
     calcBlock.addEventListener("change", (e) => {
         if (e.target === calcType || e.target === calcSquare || e.target === calcCount || e.target === calcDay) {
-            clearInterval(intervalId);
             total.textContent = 0;
             let totalValue = countCalc();
             let i = 0;
 
-            const numberAnimate = () => {
-                if (i >= totalValue) {
-                    clearInterval(intervalId);
-                } else if (i < 500) {
-                    i += 10;
-                    total.textContent = i;
-                } else {
-                    i += 100;
-                    total.textContent = i;
-                }
-            };
+            animate({
+                duration: 500,
+                timing(timeFraction) {
+                    return timeFraction;
+                },
+                draw(progress) {
+                    //from i to totalValue
+                    let result = (totalValue - i) * progress + i;
 
-            intervalId = setInterval(numberAnimate, 1);
+                    total.textContent = Math.floor(result);
+                },
+            });
         }
     });
 };
